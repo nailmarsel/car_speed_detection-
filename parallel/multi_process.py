@@ -42,30 +42,11 @@ if __name__ == '__main__':
             vid_files.append(f)
         if len(vid_files) == 30:
             break
-    counter = 1
 
     processes = []
 
-    for vid in vid_files:
-        if counter==7:
-            counter=1
-        elif counter==6:
-            counter=7
-        elif counter==5:
-            counter=6
-        elif counter==4:
-            counter=5
-        elif counter==3:
-            counter=4
-        elif counter==2:
-            counter=3
-        elif counter==1:
-            counter=2
-        if counter==1:
-            cou=0
-        else:
-            cou=counter
-        p = Process(target=func, args=(cou, vid))
+    for id in range(vid_files):
+        p = Process(target=func, args=(id, vid_files[id]))
         processes.append(p)
         p.start()
 
